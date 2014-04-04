@@ -1,0 +1,7 @@
+<package>
+  <description brief="drchubo-gazebo">drchubo-gazebo</description>
+  <depend package="gazebo" />
+  <author>Robert W. Ellenberg</author>
+  <author>Daniel M. Lofaro</author>
+  <license>private</license>
+</package>
