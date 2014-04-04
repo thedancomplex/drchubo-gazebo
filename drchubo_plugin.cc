@@ -104,10 +104,28 @@ namespace gazebo
 
     public: bool LoadParams(sdf::ElementPtr _sdf) 
     {
-      if (this->FindJointByParam(_sdf, this->joint_LSP_,
-                             "LSP") &&
-          this->FindJointByParam(_sdf, this->joint_LSR_,
-                             "LSR"))
+      if (this->FindJointByParam(_sdf, this->joint_LSP_,      "LSP") &&
+          this->FindJointByParam(_sdf, this->joint_LSR_,      "LSR") &&
+          this->FindJointByParam(_sdf, this->joint_LSY_,      "LSY") &&
+
+          this->FindJointByParam(_sdf, this->joint_RSP_,      "RSP") &&
+          this->FindJointByParam(_sdf, this->joint_RSR_,      "RSR") &&
+          this->FindJointByParam(_sdf, this->joint_RSY_,      "RSY") &&
+
+          this->FindJointByParam(_sdf, this->joint_LAP_,      "LAP") &&
+          this->FindJointByParam(_sdf, this->joint_LAR_,      "LAR") &&
+          this->FindJointByParam(_sdf, this->joint_LKP_,      "LKP") &&
+          this->FindJointByParam(_sdf, this->joint_LHP_,      "LHP") &&
+          this->FindJointByParam(_sdf, this->joint_LHR_,      "LHR") &&
+          this->FindJointByParam(_sdf, this->joint_LHY_,      "LHY") &&
+
+          this->FindJointByParam(_sdf, this->joint_RAP_,      "RAP") &&
+          this->FindJointByParam(_sdf, this->joint_RAR_,      "RAR") &&
+          this->FindJointByParam(_sdf, this->joint_RKP_,      "RKP") &&
+          this->FindJointByParam(_sdf, this->joint_RHP_,      "RHP") &&
+          this->FindJointByParam(_sdf, this->joint_RHR_,      "RHR") &&
+          this->FindJointByParam(_sdf, this->joint_RHY_,      "RHY"))
+
         return true;
       else
         return false;
@@ -141,6 +159,51 @@ namespace gazebo
     // Called by the world update start event
     public: void OnUpdate()
     {
+      double maxTorque = 700;
+      double iniAngle = 0.0;
+      this->joint_LSP_->SetMaxForce(0, maxTorque);
+      this->joint_LSR_->SetMaxForce(0, maxTorque);
+      this->joint_LSY_->SetMaxForce(0, maxTorque);
+
+      this->joint_RSP_->SetMaxForce(0, maxTorque);
+      this->joint_RSR_->SetMaxForce(0, maxTorque);
+      this->joint_RSY_->SetMaxForce(0, maxTorque);
+
+      this->joint_LAP_->SetMaxForce(0, maxTorque);
+      this->joint_LAR_->SetMaxForce(0, maxTorque);
+      this->joint_LKP_->SetMaxForce(0, maxTorque);
+      this->joint_LHP_->SetMaxForce(0, maxTorque);
+      this->joint_LHR_->SetMaxForce(0, maxTorque);
+      this->joint_LHY_->SetMaxForce(0, maxTorque);
+
+      this->joint_RAP_->SetMaxForce(0, maxTorque);
+      this->joint_RAR_->SetMaxForce(0, maxTorque);
+      this->joint_RKP_->SetMaxForce(0, maxTorque);
+      this->joint_RHP_->SetMaxForce(0, maxTorque);
+      this->joint_RHR_->SetMaxForce(0, maxTorque);
+      this->joint_RHY_->SetMaxForce(0, maxTorque);
+
+      this->joint_LSP_->SetAngle(0, iniAngle);
+      this->joint_LSR_->SetAngle(0, iniAngle);
+      this->joint_LSY_->SetAngle(0, iniAngle);
+      
+      this->joint_RSP_->SetAngle(0, iniAngle);
+      this->joint_RSR_->SetAngle(0, iniAngle);
+      this->joint_RSY_->SetAngle(0, iniAngle);
+      
+      this->joint_LAP_->SetAngle(0, iniAngle);
+      this->joint_LAR_->SetAngle(0, iniAngle);
+      this->joint_LKP_->SetAngle(0, iniAngle);
+      this->joint_LHP_->SetAngle(0, iniAngle);
+      this->joint_LHR_->SetAngle(0, iniAngle);
+      this->joint_LHY_->SetAngle(0, iniAngle);
+      
+      this->joint_RAP_->SetAngle(0, iniAngle);
+      this->joint_RAR_->SetAngle(0, iniAngle);
+      this->joint_RKP_->SetAngle(0, iniAngle);
+      this->joint_RHP_->SetAngle(0, iniAngle);
+      this->joint_RHR_->SetAngle(0, iniAngle);
+      this->joint_RHY_->SetAngle(0, iniAngle);
 
 
 
@@ -195,6 +258,26 @@ namespace gazebo
 
     private: physics::JointPtr joint_LSP_;
     private: physics::JointPtr joint_LSR_;
+    private: physics::JointPtr joint_LSY_;
+
+    private: physics::JointPtr joint_RSP_;
+    private: physics::JointPtr joint_RSR_;
+    private: physics::JointPtr joint_RSY_;
+
+    private: physics::JointPtr joint_LAP_;
+    private: physics::JointPtr joint_LAR_;
+    private: physics::JointPtr joint_LKP_;
+    private: physics::JointPtr joint_LHP_;
+    private: physics::JointPtr joint_LHR_;
+    private: physics::JointPtr joint_LHY_;
+    
+    private: physics::JointPtr joint_RAP_;
+    private: physics::JointPtr joint_RAR_;
+    private: physics::JointPtr joint_RKP_;
+    private: physics::JointPtr joint_RHP_;
+    private: physics::JointPtr joint_RHR_;
+    private: physics::JointPtr joint_RHY_;
+
   };
 
   // Register this plugin with the simulator
