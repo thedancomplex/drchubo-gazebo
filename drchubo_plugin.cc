@@ -37,7 +37,7 @@ double ttime = 0.0;
 
 namespace gazebo
 {   
-  class DrcHubo : public ModelPlugin
+  class DrcHuboPlugin : public ModelPlugin
   {
 
     // Function is called everytime a message is received.
@@ -61,6 +61,8 @@ namespace gazebo
 
       // Open Ach channel
         /* open ach channel */
+
+/*  --------
         memset( &H_ref,   0, sizeof(H_ref));
         int r = ach_open(&chan_diff_drive_ref, "robot-diff-drive" , NULL);
         assert( ACH_OK == r );
@@ -72,7 +74,7 @@ namespace gazebo
         r = ach_open(&chan_time, "robot-time" , NULL);
         assert( ACH_OK == r );
         ach_put(&chan_time, &ttime , sizeof(ttime));
-
+----------- */
 
       // Store the pointer to the model
       this->model = _parent;
@@ -91,7 +93,7 @@ namespace gazebo
         // Listen to the update event. This event is broadcast every
         // simulation iteration.
         this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-            boost::bind(&ModelDiffDrive::OnUpdate, this));
+            boost::bind(&DrcHuboPlugin::OnUpdate, this));
       }
 
       // subscribe to thread
@@ -191,8 +193,8 @@ namespace gazebo
     // Pointer to the update event connection
     private: event::ConnectionPtr updateConnection;
 
-    private: physics::JointPtr left_LSP_;
-    private: physics::JointPtr right_LSR_;
+    private: physics::JointPtr joint_LSP_;
+    private: physics::JointPtr joint_LSR_;
   };
 
   // Register this plugin with the simulator
