@@ -107,10 +107,24 @@ namespace gazebo
       if (this->FindJointByParam(_sdf, this->joint_LSP_,      "LSP") &&
           this->FindJointByParam(_sdf, this->joint_LSR_,      "LSR") &&
           this->FindJointByParam(_sdf, this->joint_LSY_,      "LSY") &&
+          this->FindJointByParam(_sdf, this->joint_LEP_,      "LEP") &&
+          this->FindJointByParam(_sdf, this->joint_LWP_,      "LWP") &&
+          this->FindJointByParam(_sdf, this->joint_LWR_,      "LWR") &&
+          this->FindJointByParam(_sdf, this->joint_LWY_,      "LWY") &&
 
           this->FindJointByParam(_sdf, this->joint_RSP_,      "RSP") &&
           this->FindJointByParam(_sdf, this->joint_RSR_,      "RSR") &&
           this->FindJointByParam(_sdf, this->joint_RSY_,      "RSY") &&
+          this->FindJointByParam(_sdf, this->joint_REP_,      "REP") &&
+          this->FindJointByParam(_sdf, this->joint_RWP_,      "RWP") &&
+          this->FindJointByParam(_sdf, this->joint_RWR_,      "RWR") &&
+          this->FindJointByParam(_sdf, this->joint_RWY_,      "RWY") &&
+
+          this->FindJointByParam(_sdf, this->joint_NK1_,      "NK1") &&
+          this->FindJointByParam(_sdf, this->joint_NK2_,      "NK2") &&
+          this->FindJointByParam(_sdf, this->joint_NK3_,      "NK3") &&
+
+          this->FindJointByParam(_sdf, this->joint_TSY_,      "TSY") &&
 
           this->FindJointByParam(_sdf, this->joint_LAP_,      "LAP") &&
           this->FindJointByParam(_sdf, this->joint_LAR_,      "LAR") &&
@@ -159,15 +173,23 @@ namespace gazebo
     // Called by the world update start event
     public: void OnUpdate()
     {
-      double maxTorque = 700;
+      double maxTorque = 500;
       double iniAngle = 0.0;
       this->joint_LSP_->SetMaxForce(0, maxTorque);
       this->joint_LSR_->SetMaxForce(0, maxTorque);
       this->joint_LSY_->SetMaxForce(0, maxTorque);
+      this->joint_LEP_->SetMaxForce(0, maxTorque);
+      this->joint_LWP_->SetMaxForce(0, maxTorque);
+      this->joint_LWR_->SetMaxForce(0, maxTorque);
+      this->joint_LWY_->SetMaxForce(0, maxTorque);
 
       this->joint_RSP_->SetMaxForce(0, maxTorque);
       this->joint_RSR_->SetMaxForce(0, maxTorque);
       this->joint_RSY_->SetMaxForce(0, maxTorque);
+      this->joint_REP_->SetMaxForce(0, maxTorque);
+      this->joint_RWP_->SetMaxForce(0, maxTorque);
+      this->joint_RWR_->SetMaxForce(0, maxTorque);
+      this->joint_RWY_->SetMaxForce(0, maxTorque);
 
       this->joint_LAP_->SetMaxForce(0, maxTorque);
       this->joint_LAR_->SetMaxForce(0, maxTorque);
@@ -183,13 +205,30 @@ namespace gazebo
       this->joint_RHR_->SetMaxForce(0, maxTorque);
       this->joint_RHY_->SetMaxForce(0, maxTorque);
 
+      this->joint_NK1_->SetMaxForce(0, maxTorque);
+      this->joint_NK2_->SetMaxForce(0, maxTorque);
+      this->joint_NK3_->SetMaxForce(0, maxTorque);
+
+      this->joint_TSY_->SetMaxForce(0, maxTorque);
+
+
+
+
       this->joint_LSP_->SetAngle(0, iniAngle);
       this->joint_LSR_->SetAngle(0, iniAngle);
       this->joint_LSY_->SetAngle(0, iniAngle);
+      this->joint_LEP_->SetAngle(0, iniAngle);
+      this->joint_LWP_->SetAngle(0, iniAngle);
+      this->joint_LWR_->SetAngle(0, iniAngle);
+      this->joint_LWY_->SetAngle(0, iniAngle);
       
       this->joint_RSP_->SetAngle(0, iniAngle);
       this->joint_RSR_->SetAngle(0, iniAngle);
       this->joint_RSY_->SetAngle(0, iniAngle);
+      this->joint_REP_->SetAngle(0, iniAngle);
+      this->joint_RWP_->SetAngle(0, iniAngle);
+      this->joint_RWR_->SetAngle(0, iniAngle);
+      this->joint_RWY_->SetAngle(0, iniAngle);
       
       this->joint_LAP_->SetAngle(0, iniAngle);
       this->joint_LAR_->SetAngle(0, iniAngle);
@@ -205,6 +244,11 @@ namespace gazebo
       this->joint_RHR_->SetAngle(0, iniAngle);
       this->joint_RHY_->SetAngle(0, iniAngle);
 
+      this->joint_NK1_->SetAngle(0, iniAngle);
+      this->joint_NK2_->SetAngle(0, iniAngle);
+      this->joint_NK3_->SetAngle(0, iniAngle);
+ 
+      this->joint_TSY_->SetAngle(0, iniAngle);
 
 
 
@@ -259,10 +303,18 @@ namespace gazebo
     private: physics::JointPtr joint_LSP_;
     private: physics::JointPtr joint_LSR_;
     private: physics::JointPtr joint_LSY_;
+    private: physics::JointPtr joint_LEP_;
+    private: physics::JointPtr joint_LWP_;
+    private: physics::JointPtr joint_LWR_;
+    private: physics::JointPtr joint_LWY_;
 
     private: physics::JointPtr joint_RSP_;
     private: physics::JointPtr joint_RSR_;
     private: physics::JointPtr joint_RSY_;
+    private: physics::JointPtr joint_REP_;
+    private: physics::JointPtr joint_RWP_;
+    private: physics::JointPtr joint_RWR_;
+    private: physics::JointPtr joint_RWY_;
 
     private: physics::JointPtr joint_LAP_;
     private: physics::JointPtr joint_LAR_;
@@ -277,6 +329,12 @@ namespace gazebo
     private: physics::JointPtr joint_RHP_;
     private: physics::JointPtr joint_RHR_;
     private: physics::JointPtr joint_RHY_;
+
+    private: physics::JointPtr joint_NK1_;
+    private: physics::JointPtr joint_NK2_;
+    private: physics::JointPtr joint_NK3_;
+
+    private: physics::JointPtr joint_TSY_;
 
   };
 
