@@ -157,12 +157,14 @@ namespace gazebo
       else
       {
         _joint = this->model->GetJoint(
-          _sdf->GetElement(_param)->GetValueString());
+          _sdf->GetElement(_param)->Get<std::string>());
+          //_sdf->GetElement(_param)->GetValueString());
 
         if (!_joint)
         {
           gzerr << "joint by name ["
-                << _sdf->GetElement(_param)->GetValueString()
+                << _sdf->GetElement(_param)->Get<std::string>()
+                //<< _sdf->GetElement(_param)->GetValueString()
                 << "] not found in model\n";
           return false;
         }
@@ -175,80 +177,80 @@ namespace gazebo
     {
       double maxTorque = 500;
       double iniAngle = 0.0;
-      this->joint_LSP_->SetMaxForce(0, maxTorque);
-      this->joint_LSR_->SetMaxForce(0, maxTorque);
-      this->joint_LSY_->SetMaxForce(0, maxTorque);
-      this->joint_LEP_->SetMaxForce(0, maxTorque);
-      this->joint_LWP_->SetMaxForce(0, maxTorque);
-      this->joint_LWR_->SetMaxForce(0, maxTorque);
-      this->joint_LWY_->SetMaxForce(0, maxTorque);
+      this->joint_LSP_->SetParam("fmax",0, maxTorque);
+      this->joint_LSR_->SetParam("fmax",0, maxTorque);
+      this->joint_LSY_->SetParam("fmax",0, maxTorque);
+      this->joint_LEP_->SetParam("fmax",0, maxTorque);
+      this->joint_LWP_->SetParam("fmax",0, maxTorque);
+      this->joint_LWR_->SetParam("fmax",0, maxTorque);
+      this->joint_LWY_->SetParam("fmax",0, maxTorque);
 
-      this->joint_RSP_->SetMaxForce(0, maxTorque);
-      this->joint_RSR_->SetMaxForce(0, maxTorque);
-      this->joint_RSY_->SetMaxForce(0, maxTorque);
-      this->joint_REP_->SetMaxForce(0, maxTorque);
-      this->joint_RWP_->SetMaxForce(0, maxTorque);
-      this->joint_RWR_->SetMaxForce(0, maxTorque);
-      this->joint_RWY_->SetMaxForce(0, maxTorque);
+      this->joint_RSP_->SetParam("fmax",0, maxTorque);
+      this->joint_RSR_->SetParam("fmax",0, maxTorque);
+      this->joint_RSY_->SetParam("fmax",0, maxTorque);
+      this->joint_REP_->SetParam("fmax",0, maxTorque);
+      this->joint_RWP_->SetParam("fmax",0, maxTorque);
+      this->joint_RWR_->SetParam("fmax",0, maxTorque);
+      this->joint_RWY_->SetParam("fmax",0, maxTorque);
 
-      this->joint_LAP_->SetMaxForce(0, maxTorque);
-      this->joint_LAR_->SetMaxForce(0, maxTorque);
-      this->joint_LKP_->SetMaxForce(0, maxTorque);
-      this->joint_LHP_->SetMaxForce(0, maxTorque);
-      this->joint_LHR_->SetMaxForce(0, maxTorque);
-      this->joint_LHY_->SetMaxForce(0, maxTorque);
+      this->joint_LAP_->SetParam("fmax",0, maxTorque);
+      this->joint_LAR_->SetParam("fmax",0, maxTorque);
+      this->joint_LKP_->SetParam("fmax",0, maxTorque);
+      this->joint_LHP_->SetParam("fmax",0, maxTorque);
+      this->joint_LHR_->SetParam("fmax",0, maxTorque);
+      this->joint_LHY_->SetParam("fmax",0, maxTorque);
 
-      this->joint_RAP_->SetMaxForce(0, maxTorque);
-      this->joint_RAR_->SetMaxForce(0, maxTorque);
-      this->joint_RKP_->SetMaxForce(0, maxTorque);
-      this->joint_RHP_->SetMaxForce(0, maxTorque);
-      this->joint_RHR_->SetMaxForce(0, maxTorque);
-      this->joint_RHY_->SetMaxForce(0, maxTorque);
+      this->joint_RAP_->SetParam("fmax",0, maxTorque);
+      this->joint_RAR_->SetParam("fmax",0, maxTorque);
+      this->joint_RKP_->SetParam("fmax",0, maxTorque);
+      this->joint_RHP_->SetParam("fmax",0, maxTorque);
+      this->joint_RHR_->SetParam("fmax",0, maxTorque);
+      this->joint_RHY_->SetParam("fmax",0, maxTorque);
 
-      this->joint_NK1_->SetMaxForce(0, maxTorque);
-      this->joint_NK2_->SetMaxForce(0, maxTorque);
-      this->joint_NK3_->SetMaxForce(0, maxTorque);
+      this->joint_NK1_->SetParam("fmax",0, maxTorque);
+      this->joint_NK2_->SetParam("fmax",0, maxTorque);
+      this->joint_NK3_->SetParam("fmax",0, maxTorque);
 
-      this->joint_TSY_->SetMaxForce(0, maxTorque);
-
-
+      this->joint_TSY_->SetParam("fmax",0, maxTorque);
 
 
-      this->joint_LSP_->SetAngle(0, iniAngle);
-      this->joint_LSR_->SetAngle(0, iniAngle);
-      this->joint_LSY_->SetAngle(0, iniAngle);
-      this->joint_LEP_->SetAngle(0, iniAngle);
-      this->joint_LWP_->SetAngle(0, iniAngle);
-      this->joint_LWR_->SetAngle(0, iniAngle);
-      this->joint_LWY_->SetAngle(0, iniAngle);
+
+
+      this->joint_LSP_->SetPosition(0, iniAngle);
+      this->joint_LSR_->SetPosition(0, iniAngle);
+      this->joint_LSY_->SetPosition(0, iniAngle);
+      this->joint_LEP_->SetPosition(0, iniAngle);
+      this->joint_LWP_->SetPosition(0, iniAngle);
+      this->joint_LWR_->SetPosition(0, iniAngle);
+      this->joint_LWY_->SetPosition(0, iniAngle);
       
-      this->joint_RSP_->SetAngle(0, iniAngle);
-      this->joint_RSR_->SetAngle(0, iniAngle);
-      this->joint_RSY_->SetAngle(0, iniAngle);
-      this->joint_REP_->SetAngle(0, iniAngle);
-      this->joint_RWP_->SetAngle(0, iniAngle);
-      this->joint_RWR_->SetAngle(0, iniAngle);
-      this->joint_RWY_->SetAngle(0, iniAngle);
+      this->joint_RSP_->SetPosition(0, iniAngle);
+      this->joint_RSR_->SetPosition(0, iniAngle);
+      this->joint_RSY_->SetPosition(0, iniAngle);
+      this->joint_REP_->SetPosition(0, iniAngle);
+      this->joint_RWP_->SetPosition(0, iniAngle);
+      this->joint_RWR_->SetPosition(0, iniAngle);
+      this->joint_RWY_->SetPosition(0, iniAngle);
       
-      this->joint_LAP_->SetAngle(0, iniAngle);
-      this->joint_LAR_->SetAngle(0, iniAngle);
-      this->joint_LKP_->SetAngle(0, iniAngle);
-      this->joint_LHP_->SetAngle(0, iniAngle);
-      this->joint_LHR_->SetAngle(0, iniAngle);
-      this->joint_LHY_->SetAngle(0, iniAngle);
+      this->joint_LAP_->SetPosition(0, iniAngle);
+      this->joint_LAR_->SetPosition(0, iniAngle);
+      this->joint_LKP_->SetPosition(0, iniAngle);
+      this->joint_LHP_->SetPosition(0, iniAngle);
+      this->joint_LHR_->SetPosition(0, iniAngle);
+      this->joint_LHY_->SetPosition(0, iniAngle);
       
-      this->joint_RAP_->SetAngle(0, iniAngle);
-      this->joint_RAR_->SetAngle(0, iniAngle);
-      this->joint_RKP_->SetAngle(0, iniAngle);
-      this->joint_RHP_->SetAngle(0, iniAngle);
-      this->joint_RHR_->SetAngle(0, iniAngle);
-      this->joint_RHY_->SetAngle(0, iniAngle);
+      this->joint_RAP_->SetPosition(0, iniAngle);
+      this->joint_RAR_->SetPosition(0, iniAngle);
+      this->joint_RKP_->SetPosition(0, iniAngle);
+      this->joint_RHP_->SetPosition(0, iniAngle);
+      this->joint_RHR_->SetPosition(0, iniAngle);
+      this->joint_RHY_->SetPosition(0, iniAngle);
 
-      this->joint_NK1_->SetAngle(0, iniAngle);
-      this->joint_NK2_->SetAngle(0, iniAngle);
-      this->joint_NK3_->SetAngle(0, iniAngle);
+      this->joint_NK1_->SetPosition(0, iniAngle);
+      this->joint_NK2_->SetPosition(0, iniAngle);
+      this->joint_NK3_->SetPosition(0, iniAngle);
  
-      this->joint_TSY_->SetAngle(0, iniAngle);
+      this->joint_TSY_->SetPosition(0, iniAngle);
 
 
 
@@ -266,8 +268,8 @@ namespace gazebo
         }
         else{   assert( sizeof(H_ref) == fs ); }
 
-      this->left_wheel_joint_->SetMaxForce(0, 7);
-      this->right_wheel_joint_->SetMaxForce(0, 7);
+      this->left_wheel_joint_->SetParam("fmax",0, 7);
+      this->right_wheel_joint_->SetParam("fmax",0, 7);
       this->right_wheel_joint_->SetVelocity(0, H_ref[0]);
       this->left_wheel_joint_->SetVelocity(0, H_ref[1]);
 
@@ -279,8 +281,8 @@ namespace gazebo
 //      this->right_wheel_joint_->SetForce(0, H_ref[0]);
 //      this->left_wheel_joint_->SetForce(0, H_ref[1]);
 
-     //this->left_wheel_joint_->SetMaxForce(0, 10);
-      //this->right_wheel_joint_->SetMaxForce(0, 10);
+     //this->left_wheel_joint_->SetParam("fmax",0, 10);
+      //this->right_wheel_joint_->SetParam("fmax",0, 10);
       //this->left_wheel_joint_->SetForce(0, -0.5);
 //      this->left_wheel_joint_->SetForce(0, 0.2);
       //this->right_wheel_joint_->SetVelocity(0,0.5);
